@@ -1,15 +1,16 @@
 <template>
   <h1>Reaction Game</h1>
-  <button @click="start" class="play" :disabled="isPlaying">Play</button>
+  <button @click="start" class="play" v-if="!isPlaying">Play</button>
   <Block v-if="isPlaying" :delay="delay" @endGame="displayResults" />
-  <h1 v-if="showScore">Your reaction is {{ result }} ms</h1>
+  <Results v-if="showScore" :result="result" />
 </template>
 
 <script>
 import Block from './components/Block.vue'
+import Results from './components/Results.vue'
 export default {
   name: 'App',
-  components: { Block },
+  components: { Block,  Results },
   data(){
     return {
       isPlaying: false,
@@ -20,7 +21,7 @@ export default {
   },
   methods: {
     start(){
-      this.delay = 2000 + Math.random()*5000
+      this.delay = 1000 + Math.random()*5000
       this.isPlaying = true
       this.showScore = false
     },

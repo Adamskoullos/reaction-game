@@ -42,5 +42,6 @@ export default {
         text-align: center;
         padding: 100px;
         margin: 40px auto;
+        font-size: 3rem;
     }
 </style>
